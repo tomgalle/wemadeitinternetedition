@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title> </title>
+
+        <meta name="description" content=" "/>
+        <link rel="image_src" href="img/ .png" />
+
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">   
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <style>
+            
+
+            iframe {
+                display: none;
+            }
+        
+            .dollar {
+                z-index: 100;
+
+            }
+
+        </style>
+
+    </head>
+
+
+    <body>
+
+        
+
+        <!-- <button>Play / Pause</button> -->
+
+        <iframe id="soundcloud_widget"
+              src="http://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/126820634&show_artwork=false&liking=false&sharing=false&auto_play=true"
+              width="420"
+              height="120"
+              frameborder="no">
+        </iframe>
+        
+     
+
+        
+
+        <img class="dollar" with="169px" height="56" src="img/dollar01.png"/>
+
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+        <script type="text/javascript" src="http://w.soundcloud.com/player/api.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+
+       
+      
+        <script>
+
+
+
+            $(document).ready(function() {
+
+                var widget = SC.Widget(document.getElementById('soundcloud_widget'));
+                    widget.bind(SC.Widget.Events.READY, function() {
+                    console.log('Ready...');
+                });
+
+                $('button').click(function() {
+                    widget.toggle();
+                });
+            });
+
+
+
+            
+
+
+            
+            var dollar01 = $('.dollar');
+            zigzag(dollar01);
+            // zag(dollar01);
+
+            function zigzag(bill) {
+
+                var currPos = bill.offset();
+                var leftPos = currPos.left;
+                var topPos = currPos.top;
+                console.log(currPos);
+
+                bill.transition({ x: leftPos + '60px', y: topPos + '25px' });
+                bill.transition({ x: leftPos - '60px', y: topPos + '25px' });
+                
+
+            };
+
+
+           
+
+
+           
+        </script>
+
+
+    </body>
+</html>
+
+
+
+<!--             var dollar01 = $('.dollar');
+            zig(dollar01);
+            zag(dollar01);
+
+            function zig(bill) {
+
+                var currPos = bill.offset();
+                var leftPos = currPos.left;
+                var topPos = currPos.top;
+                console.log(currPos);
+
+                bill.transition({ x: leftPos + '60px', y: topPos + '25px' });
+                
+
+            };
+
+
+            function zag(bill) {
+                var currPos = bill.offset();
+                var leftPos = currPos.left;
+                var topPos = currPos.top;
+                console.log(currPos);
+
+                bill.transition({ x: leftPos + '1060px', y: topPos + '25px' });
+                // zig(dollar01);
+
+            }
+
+             -->
+            
+
+
+
+
+
+
+
+
+
+
+<!--                 bill.transition({x:'60px', y: '25px'}, 600, 'ease');
+                bill.transition({x:'-60px', y:'50px' }, 600, 'ease');
+                bill.transition({x:'60px', y:'75px' }, 600, 'ease');
+                bill.transition({x:'-60px', y:'100px' }, 600, 'ease');
+                bill.transition({x:'60px', y:'125px' }, 600, 'ease');
+                bill.transition({x:'-60px', y:'160px' }, 600, 'ease');
+                bill.transition({x:'70px', y:'185px' }, 600, 'ease');
+                bill.transition({x:'-60px', y:'200px' }, 600, 'ease');
+                bill.transition({x:'60px', y:'230px' }, 600, 'ease');
+                bill.transition({x:'-60px', y:'260px' }, 600, 'ease');
+                bill.transition({x:'60px', y:'300px' }, 600, 'ease'); -->
+
+
+
+
+
+
+
+
+
