@@ -13,6 +13,11 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
 
         <style>
+
+            body {
+                overflow:hidden;
+                width: 100%;
+            }
             
 
             iframe {
@@ -35,16 +40,16 @@
 
         
 
-        <!-- <button>Play / Pause</button> -->
+        <button>Play / Pause</button>
 
-<!--         <iframe id="soundcloud_widget"
+        <iframe id="soundcloud_widget"
               src="http://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/126820634&show_artwork=false&liking=false&sharing=false&auto_play=true"
               width="420"
               height="120"
               frameborder="no">
         </iframe>
         
-      -->
+     
 
         
 
@@ -55,84 +60,6 @@
         <script type="text/javascript" src="js/jquery.transit.min.js"></script>
         <script type="text/javascript" src="http://w.soundcloud.com/player/api.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-
-       
-      
-        <script>
-
-
-
-            $(document).ready(function() {
-
-                var widget = SC.Widget(document.getElementById('soundcloud_widget'));
-                    widget.bind(SC.Widget.Events.READY, function() {
-                    console.log('Ready...');
-                });
-
-                $('button').click(function() {
-                    widget.toggle();
-                });
-            });
-           
-            var dollar01 = $('.dollar');
- 
-               function drop(bill) {
-
-                var currPos = bill.offset();
-                var leftPos = currPos.left;
-                var topPos = currPos.top;
-                var pageHeight = $(window).height();
-                var pageWith = $(window).width();
-                var randomX = Math.floor(Math.random() * pageWith );
-                console.log(randomX);               
-               
-                
-                var zigzag = function()  {
-
-                    console.log('zigzag');
-
-                    // var topPos1 = bill.offset().top; 
-                    // console.log(topPos1);
-                    
-                    bill.transition({ x: leftPos + 60, onComplete: function(){
-                        bill.transition({x: leftPos - 60});
-                        zigzag();
-                        }
-                    });
-                }
-
-                zigzag();
-
-                var ymovement = function() {
-
-                    var currPos2 = bill.offset().top;
-                    if ( currPos2 > pageHeight ) {
-                    
-                        var pageWith = $(window).width();
-                        var randomX = Math.floor(Math.random() * pageWith );
-                    
-                        bill.css({
-                            top: -65,
-                            left: randomX
-                        })   
-                    }
-
-                    else {
-                        bill.css({ top: currPos2 + 1 });
-                    }                    
-                }
-
-                setInterval(function(){ ymovement();}, 1000/60 )
-
-            }
-
-            drop(dollar01);
-
-           
-
-
-           
-        </script>
 
 
     </body>
