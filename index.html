@@ -21,6 +21,8 @@
         
             .dollar {
                 z-index: 100;
+                position: absolute;
+                top: -65px;
 
             }
 
@@ -35,14 +37,14 @@
 
         <!-- <button>Play / Pause</button> -->
 
-        <iframe id="soundcloud_widget"
+<!--         <iframe id="soundcloud_widget"
               src="http://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/126820634&show_artwork=false&liking=false&sharing=false&auto_play=true"
               width="420"
               height="120"
               frameborder="no">
         </iframe>
         
-     
+      -->
 
         
 
@@ -71,30 +73,60 @@
                     widget.toggle();
                 });
             });
-
-
-
-            
-
-
-            
+           
             var dollar01 = $('.dollar');
-            zigzag(dollar01);
-            // zag(dollar01);
-
-            function zigzag(bill) {
+ 
+               function drop(bill) {
 
                 var currPos = bill.offset();
                 var leftPos = currPos.left;
                 var topPos = currPos.top;
-                console.log(currPos);
-
-                bill.transition({ x: leftPos + '60px', y: topPos + '25px' });
-                bill.transition({ x: leftPos - '60px', y: topPos + '25px' });
+                var pageHeight = $(window).height();
+                var pageWith = $(window).width();
+                var randomX = Math.floor(Math.random() * pageWith );
+                console.log(randomX);               
+               
                 
+                var zigzag = function()  {
 
-            };
+                    console.log('zigzag');
 
+                    // var topPos1 = bill.offset().top; 
+                    // console.log(topPos1);
+                    
+                    bill.transition({ x: leftPos + 60, onComplete: function(){
+                        bill.transition({x: leftPos - 60});
+                        zigzag();
+                        }
+                    });
+                }
+
+                zigzag();
+
+                var ymovement = function() {
+
+                    var currPos2 = bill.offset().top;
+                    if ( currPos2 > pageHeight ) {
+                    
+                        var pageWith = $(window).width();
+                        var randomX = Math.floor(Math.random() * pageWith );
+                    
+                        bill.css({
+                            top: -65,
+                            left: randomX
+                        })   
+                    }
+
+                    else {
+                        bill.css({ top: currPos2 + 1 });
+                    }                    
+                }
+
+                setInterval(function(){ ymovement();}, 1000/60 )
+
+            }
+
+            drop(dollar01);
 
            
 
@@ -106,6 +138,38 @@
     </body>
 </html>
 
+
+
+
+
+
+<!--                 var xmovement = function()  {
+
+                    console.log('running');
+                    
+                    bill.transition({ x: leftPos + 60, onComplete: function(){ 
+                            bill.transition({ x: leftPos - 60, onComplete: function(){
+                                xmovement();
+                                // console.log(xmovement);
+                                } 
+                            });
+                        }
+                     });
+                };
+
+                var ymovement = function () {
+
+                    bill.transition({ y: bottomPage}, 8000);                   
+
+                };
+
+                xmovement();
+                ymovement();
+                
+ -->
+
+
+<!-- , onComplete: function(){ bill.stop();}   -->
 
 
 <!--             var dollar01 = $('.dollar');
@@ -168,3 +232,52 @@
 
 
 
+<!--                 var zig = function()  {
+                    var currPos = bill.offset();
+                    var leftPos = currPos.left;
+                    var topPos = currPos.top;
+
+                    console.log(currPos);
+                    console.log('zig');
+                    
+                    bill.transition({ x: leftPos + 60, y: topPos + 25});
+                    zag();
+                };
+
+                var zag = function() {
+                    var currPos = bill.offset();
+                    var leftPos = currPos.left;
+                    var topPos = currPos.top;
+
+                    console.log(currPos);
+                    console.log('zag');
+
+                    bill.transition({ x: leftPos - 60, y: topPos + 50});
+                    // zig();
+                };
+
+                zig();
+                
+ -->
+
+
+
+<!-- 
+                var xmovement = function() {
+
+                    bill.animate({ left: '60' }, 500, function(){ 
+                        bill.animate({ left: '-60' }, 500);
+                     });
+                }
+
+                xmovement();
+
+
+                var ymovement = function() {
+                    bill.animate({ top: '1000' }, 8000 );
+                }
+
+                ymovement();
+
+
+            }; -->
